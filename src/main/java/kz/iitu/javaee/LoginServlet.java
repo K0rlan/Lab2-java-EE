@@ -23,8 +23,11 @@ public class LoginServlet extends HttpServlet {
         }
         else
         {
-            RequestDispatcher req = request.getRequestDispatcher("succeslog.jsp");
-            req.forward(request, response);
+            HttpSession session = request.getSession();
+            session.setAttribute("username", "Korlan");
+            Cookie cookie = new Cookie("email", username);
+            response.addCookie(cookie);
+            response.sendRedirect("succeslog.jsp");
 //            Cookie cookie = new Cookie("username",username);
 //            response.addCookie(cookie);
 //            HttpSession session = request.getSession();
